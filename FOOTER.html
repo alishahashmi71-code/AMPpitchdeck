@@ -1,0 +1,118 @@
+<script>
+  function goToPanel(target){
+    document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.dataset.panel === target));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.panel === target));
+    if(target === 'ads'){
+      document.querySelector('.tab-btn[data-panel="addons"]').classList.add('active');
+    }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('tabRow').addEventListener('click', (e) => {
+    const btn = e.target.closest('.tab-btn');
+    if (!btn) return;
+    goToPanel(btn.dataset.panel);
+  });
+  document.querySelectorAll('[data-goto]').forEach(el => {
+    el.addEventListener('click', () => goToPanel(el.dataset.goto));
+  });
+
+  /* ---------------- BUILD YOUR PLAN (form) ---------------- */
+  /*  Set the recipient address below before sharing this file.  */
+  var AMP_CONTACT_EMAIL = 'REPLACE-ME@applied.com';
+
+  (function(){
+    var panel = document.querySelector('.panel[data-panel="build"]');
+    if (!panel) return;
+
+    var recap    = panel.querySelector('#pf-recap');
+    var tierErr  = panel.querySelector('#pf-tier-err');
+    var outBox   = panel.querySelector('#pf-out');
+    var outText  = panel.querySelector('#pf-out-text');
+
+    function tierVal(){
+      var r = panel.querySelector('input[name="pf-tier"]:checked');
+      return r ? r.value : '';
+    }
+    function addons(){
+      var out = [];
+      panel.querySelectorAll('input[data-addon]:checked').forEach(function(c){
+        if (!c.disabled) out.push(c.getAttribute('data-addon'));
+      });
+      return out;
+    }
+    function updateRecap(){
+      var t = tierVal(), n = addons().length;
+      recap.innerHTML = (t ? '<strong>' + t + '</strong>' : 'No package selected yet')
+        + ' &middot; <strong>' + n + '</strong> add-on' + (n === 1 ? '' : 's');
+    }
+    panel.addEventListener('change', function(e){
+      if (e.target.name === 'pf-tier') tierErr.style.display = 'none';
+      updateRecap();
+    });
+
+    function clearErr(f){ f.classList.remove('pf-error'); }
+    panel.querySelectorAll('.pf-field input, .pf-field select').forEach(function(el){
+      el.addEventListener('input', function(){ clearErr(el.closest('.pf-field')); });
+    });
+
+    function validate(){
+      var ok = true, first = null;
+      if (!tierVal()){ tierErr.style.display = 'block'; ok = false; first = tierErr; }
+      panel.querySelectorAll('[data-required]').forEach(function(el){
+        var f = el.closest('.pf-field'), bad = !el.value.trim();
+        if (!bad && el.type === 'email') bad = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
+        if (bad){ f.classList.add('pf-error'); ok = false; if (!first) first = f; }
+        else clearErr(f);
+      });
+      if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
+      return ok;
+    }
+
+    function buildSummary(){
+      var L = [];
+      L.push('AMP BRAND PARTNER PLAN REQUEST');
+      L.push('Submitted ' + new Date().toLocaleDateString());
+      L.push('');
+      L.push('PACKAGE');
+      L.push('  ' + tierVal());
+      L.push('');
+      var a = addons();
+      L.push('ADD-ONS (' + a.length + ')');
+      if (a.length) a.forEach(function(x){ L.push('  - ' + x); });
+      else L.push('  None selected');
+      L.push('');
+      L.push('CONTACT');
+      panel.querySelectorAll('.pf-field input, .pf-field select, .pf-field textarea').forEach(function(el){
+        var label = el.getAttribute('data-label');
+        if (label && el.value.trim()) L.push('  ' + label + ': ' + el.value.trim());
+      });
+      return L.join('\n');
+    }
+
+    panel.querySelector('#pf-send').addEventListener('click', function(){
+      if (!validate()) return;
+      var body    = buildSummary();
+      var company = (panel.querySelector('#pf-company').value || '').trim();
+      var subject = 'AMP plan request' + (company ? ' \u2014 ' + company : '');
+      outText.value = body;
+      outBox.classList.add('pf-show');
+      window.location.href = 'mailto:' + AMP_CONTACT_EMAIL
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+      outBox.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    panel.querySelector('#pf-reset').addEventListener('click', function(){
+      panel.querySelectorAll('input[name="pf-tier"]').forEach(function(r){ r.checked = false; });
+      panel.querySelectorAll('input[data-addon]').forEach(function(c){ c.checked = false; });
+      panel.querySelectorAll('.pf-field input, .pf-field select, .pf-field textarea').forEach(function(el){ el.value = ''; });
+      panel.querySelectorAll('.pf-field').forEach(clearErr);
+      tierErr.style.display = 'none';
+      outBox.classList.remove('pf-show');
+      updateRecap();
+      panel.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    updateRecap();
+  })();
+</script>
