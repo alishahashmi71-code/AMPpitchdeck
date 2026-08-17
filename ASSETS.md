@@ -2,11 +2,8 @@
 
 21 image references in the page, 15 unique files after de-duplication (several tips reuse the same screenshot).
 
-16 of 21 references are wired to hosted HubSpot URLs in `BODY.html`. The 5 remaining
-`tip-shot-packages-pip*` and `tip-shot-packages-continental` (no suffix) tokens are still
-pending: upload `images/tip-shot-packages-pip.png`, `-pip-2.png`, `-pip-3.png`, `-pip-4.jpg`,
-and `images/tip-shot-packages-continental.png` to HubSpot's File Manager, then send the
-resulting URLs to swap into `BODY.html`.
+All 21 of 21 references are wired to hosted HubSpot URLs in `BODY.html`. No `[[IMG:...]]`
+placeholders remain.
 
 | Token | File | Panel | Size (bytes) | Dup of earlier row? | Status |
 |---|---|---|---|---|---|
@@ -16,11 +13,11 @@ resulting URLs to swap into `BODY.html`.
 | `[[IMG:icon-instagram]]` | `images/icon-instagram.png` | overview | 8,771 | | ✅ wired |
 | `[[IMG:icon-tiktok]]` | `images/icon-tiktok.png` | overview | 6,330 | | ✅ wired |
 | `[[IMG:icon-x]]` | `images/icon-x.png` | overview | 2,703 | | ✅ wired |
-| `[[IMG:tip-shot-packages-pip]]` | `images/tip-shot-packages-pip.png` | packages | 63,707 | | 🔌 pending |
-| `[[IMG:tip-shot-packages-pip-2]]` | `images/tip-shot-packages-pip-2.png` | packages | 2,346 | | 🔌 pending |
-| `[[IMG:tip-shot-packages-pip-3]]` | `images/tip-shot-packages-pip-3.png` | packages | 52,978 | | 🔌 pending |
-| `[[IMG:tip-shot-packages-pip-4]]` | `images/tip-shot-packages-pip-4.jpg` | packages | 126,512 | | 🔌 pending |
-| `[[IMG:tip-shot-packages-continental]]` | `images/tip-shot-packages-continental.png` | packages | 133,229 | | 🔌 pending |
+| `[[IMG:tip-shot-packages-pip]]` | `images/tip-shot-packages-pip.png` | packages | 63,707 | | ✅ wired |
+| `[[IMG:tip-shot-packages-pip-2]]` | `images/tip-shot-packages-pip-2.png` | packages | 2,346 | | ✅ wired |
+| `[[IMG:tip-shot-packages-pip-3]]` | `images/tip-shot-packages-pip-3.png` | packages | 52,978 | | ✅ wired |
+| `[[IMG:tip-shot-packages-pip-4]]` | `images/tip-shot-packages-pip-4.jpg` | packages | 126,512 | | ✅ wired |
+| `[[IMG:tip-shot-packages-continental]]` | `images/tip-shot-packages-continental.png` | packages | 133,229 | | ✅ wired |
 | `[[IMG:img-packages]]` | `images/img-packages.png` | packages | 56,268 | | ✅ wired |
 | `[[IMG:tip-shot-packages-continental-2]]` | `images/tip-shot-packages-continental-2.jpg` | packages | 86,469 | | ✅ wired |
 | `[[IMG:tip-shot-packages-continental-3]]` | `images/tip-shot-packages-continental-3.png` | packages | 58,791 | | ✅ wired |
