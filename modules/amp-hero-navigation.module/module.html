@@ -1,0 +1,62 @@
+<div class="amp-hero-nav" {% if module.accent_color.color %}style="--amp-accent: {{ module.accent_color.color }};"{% endif %}>
+  <div class="amp-hero-nav__inner">
+
+    <div class="amp-hero-nav__top">
+      {% if module.logo.src %}
+        <div class="amp-hero-nav__logo-badge">
+          <img src="{{ module.logo.src }}"
+               alt="{{ module.logo.alt }}"
+               {% if module.logo.width %}width="{{ module.logo.width }}"{% endif %}
+               {% if module.logo.height %}height="{{ module.logo.height }}"{% endif %}
+               loading="eager">
+        </div>
+      {% endif %}
+
+      {% if module.nav_items %}
+        <button type="button" class="amp-hero-nav__toggle" aria-expanded="false" aria-controls="amp-hero-nav-list">
+          <span class="amp-hero-nav__toggle-bar"></span>
+          <span class="amp-hero-nav__toggle-bar"></span>
+          <span class="amp-hero-nav__toggle-bar"></span>
+          <span class="amp-hero-nav__toggle-label">Menu</span>
+        </button>
+
+        <nav class="amp-hero-nav__nav" aria-label="Section navigation">
+          <ul class="amp-hero-nav__nav-list" id="amp-hero-nav-list">
+            {% for item in module.nav_items %}
+              <li>
+                <a class="amp-hero-nav__nav-link"
+                   href="{{ item.link.url.href }}"
+                   {% if item.link.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
+                   {% if item.link.no_follow %}rel="nofollow"{% endif %}>
+                  {{ item.label }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+    </div>
+
+    <div class="amp-hero-nav__copy">
+      {% if module.show_eyebrow and module.eyebrow_text %}
+        <p class="amp-hero-nav__eyebrow">{{ module.eyebrow_text }}</p>
+      {% endif %}
+
+      <h1 class="amp-hero-nav__heading">{{ module.heading }}</h1>
+
+      {% if module.intro_copy %}
+        <div class="amp-hero-nav__intro">{{ module.intro_copy }}</div>
+      {% endif %}
+
+      {% if module.cta_url.url.href and module.cta_label %}
+        <a class="amp-hero-nav__cta"
+           href="{{ module.cta_url.url.href }}"
+           {% if module.cta_url.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
+           {% if module.cta_url.no_follow %}rel="nofollow"{% endif %}>
+          {{ module.cta_label }}
+        </a>
+      {% endif %}
+    </div>
+
+  </div>
+</div>

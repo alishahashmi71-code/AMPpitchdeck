@@ -1,0 +1,13 @@
+{
+  "label": "AMP Hero Navigation",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "Hero + section navigation for the AMP Brand Partner proposal page. Logo, eyebrow, H1, intro copy, nav pills, and a Build Your Plan CTA.",
+  "host_template_types": ["PAGE", "LANDING_PAGE"],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": ["hero", "navigation", "AMP"],
+  "is_available_for_new_content": true
+}

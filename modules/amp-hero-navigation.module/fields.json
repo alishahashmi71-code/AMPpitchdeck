@@ -1,0 +1,119 @@
+[
+  {
+    "name": "logo",
+    "label": "Logo",
+    "required": true,
+    "locked": false,
+    "type": "image",
+    "default": {
+      "size_type": "auto",
+      "src": "https://6847819.fs1.hubspotusercontent-na1.net/hubfs/6847819/AMP/appliedlogo.png?width=200",
+      "alt": "Applied Industrial Technologies"
+    },
+    "help_text": "Displayed in the white logo badge at the top of the hero."
+  },
+  {
+    "name": "show_eyebrow",
+    "label": "Show eyebrow text",
+    "required": false,
+    "locked": false,
+    "type": "boolean",
+    "default": true,
+    "help_text": "OPTIONAL EXTRA (not one of the 7 original bullets). Toggles the eyebrow line on/off without deleting its text."
+  },
+  {
+    "name": "eyebrow_text",
+    "label": "Eyebrow text",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "APPLIED MARKETING PARTNERSHIP",
+    "help_text": "Small label above the H1. Only shown when \"Show eyebrow text\" is on."
+  },
+  {
+    "name": "heading",
+    "label": "Heading (H1)",
+    "required": true,
+    "locked": false,
+    "type": "text",
+    "default": "Amplify your program with Applied",
+    "help_text": "Renders as the page's real <h1>. Keep it plain text (no formatting) for accessibility and consistent styling."
+  },
+  {
+    "name": "intro_copy",
+    "label": "Introductory copy",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "<p>See your impact, compare partner packages, and build a plan tailored to your brand.</p>",
+    "help_text": "Short supporting paragraph under the H1. Rich text so an editor can bold/link a phrase if needed, but keep it to 1-2 sentences."
+  },
+  {
+    "name": "nav_items",
+    "label": "Navigation items",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 8,
+      "sorting_label_field": "label"
+    },
+    "children": [
+      {
+        "name": "label",
+        "label": "Label",
+        "required": true,
+        "locked": false,
+        "type": "text",
+        "default": "Our impact"
+      },
+      {
+        "name": "link",
+        "label": "Link",
+        "required": true,
+        "locked": false,
+        "type": "link",
+        "default": {
+          "url": { "type": "EXTERNAL", "href": "" },
+          "open_in_new_tab": false,
+          "no_follow": false
+        },
+        "help_text": "Point this at an in-page anchor (e.g. #packages) if the target section is on the same page, or a full URL otherwise."
+      }
+    ],
+    "help_text": "One entry per nav pill. Reorder by dragging; add up to 8."
+  },
+  {
+    "name": "cta_label",
+    "label": "Build Your Plan button label",
+    "required": true,
+    "locked": false,
+    "type": "text",
+    "default": "Build your plan"
+  },
+  {
+    "name": "cta_url",
+    "label": "Build Your Plan URL",
+    "required": true,
+    "locked": false,
+    "type": "link",
+    "default": {
+      "url": { "type": "EXTERNAL", "href": "" },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
+  },
+  {
+    "name": "accent_color",
+    "label": "Accent color",
+    "required": false,
+    "locked": false,
+    "type": "color",
+    "default": {
+      "color": "#6E5FF0",
+      "opacity": 100
+    },
+    "help_text": "OPTIONAL EXTRA (not one of the 7 original bullets). Tints the CTA button and the soft glow behind the hero. Leave default if unsure."
+  }
+]
